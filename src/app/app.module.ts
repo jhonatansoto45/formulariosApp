@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from "@angular/common/http";
 
 import { AppRoutingModule } from './app-routing.module';
 import { ReactiveModule } from './reactive/reactive.module';
@@ -12,6 +13,7 @@ import { AppComponent } from './app.component';
   imports: [
     AppRoutingModule,
     BrowserModule,
+    HttpClientModule,
     ReactiveModule,
     SharedModule,
     TemplateModule,

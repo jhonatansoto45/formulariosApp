@@ -36,8 +36,19 @@
             placeholder="Email del usuario"
           />
           <span *ngIf="campoNoValido('email')" class="form-text text-danger">
+            {{ emailErrorMsg }}
+          </span>
+          <!-- <span *ngIf="emailRequired()" class="form-text text-danger">
             El correo es obligatorio
           </span>
+
+          <span *ngIf="emailPattern()" class="form-text text-danger">
+            El valor no tiene formato de correo
+          </span>
+
+          <span *ngIf="emailExiste()" class="form-text text-danger">
+            El correo electronico ya existe
+          </span> -->
         </div>
       </div>
 
@@ -83,7 +94,10 @@
             placeholder="Confirmar la contraseña"
             formControlName="password2"
           />
-          <span *ngIf="campoNoValido('password2')" class="form-text text-danger">
+          <span
+            *ngIf="campoNoValido('password2')"
+            class="form-text text-danger"
+          >
             Las contrseñas debe ser iguales
           </span>
         </div>
@@ -91,7 +105,13 @@
 
       <div class="row">
         <div class="col">
-          <button type="submit" class="btn btn-primary float-end">Crear</button>
+          <button
+            [disabled]="miFormulario.pending"
+            type="submit"
+            class="btn btn-primary float-end"
+          >
+            Crear
+          </button>
         </div>
       </div>
     </form>
@@ -99,6 +119,8 @@
 </div>
 
 <h2>Form Valid: {{ miFormulario.valid }}</h2>
+<h2>Form Status: {{ miFormulario.status }}</h2>
+<h2>Form Pending: {{ miFormulario.pending }}</h2>
 <h2>Form Errors:</h2>
 <pre>{{ miFormulario.errors | json }}</pre>
 
